@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic App Store Link</title>
+    <script>
+        function redirectToAppStore() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const iOSLink = "https://apps.apple.com/ae/app/starscinemas/id6744034943";
+            const androidLink = "https://play.google.com/store/apps/details?id=com.emedia.starscinemas";
+
+            // Check if the device is iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = iOSLink;
+            }
+            // Check if the device is Android
+            else if (/android/i.test(userAgent)) {
+                window.location.href = androidLink;
+            }
+            // Fallback for other devices (e.g., desktop)
+            else {
+                // You can choose a default link or show both
+                window.location.href = androidLink; // Example fallback
+            }
+        }
+    </script>
+</head>
+<body onload="redirectToAppStore()">
+    <p>Redirecting to the appropriate app store...</p>
+    <p>If not redirected, click below:</p>
+    <a href="https://apps.apple.com/ae/app/starscinemas/id6744034943">iOS App Store</a><br>
+    <a href="https://play.google.com/store/apps/details?id=com.emedia.starscinemas">Google Play Store</a>
+</body>
+</html>
